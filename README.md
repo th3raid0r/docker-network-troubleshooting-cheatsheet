@@ -41,6 +41,7 @@
    - Check SELinux status: `getenforce` or `sestatus`
    - You may have to set SELinux in permissive mode temporarily for troubleshooting: `sudo setenforce 0`
    - Make sure to understand the security implications before disabling or adjusting SELinux settings.
+   - No, seriously, setting to permissive mode should only be a **_temporary_** measure.
   
 4. **DNS Resolution Issues on the Host**
    - Check your DNS settings in `/etc/resolv.conf`
