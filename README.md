@@ -41,6 +41,18 @@
    - Check SELinux status: `getenforce` or `sestatus`
    - You may have to set SELinux in permissive mode temporarily for troubleshooting: `sudo setenforce 0`
    - Make sure to understand the security implications before disabling or adjusting SELinux settings.
+  
+4. **DNS Resolution Issues on the Host**
+   - Check your DNS settings in `/etc/resolv.conf`
+   - Try to manually resolve addresses using `dig` or `nslookup`: `dig @dns_server_ip domain_to_resolve`
+   - If DNS settings have been recently changed, you might need to flush DNS cache. Ubuntu doesn't cache DNS queries by default, but if caching is enabled via `dnsmasq` or `systemd-resolved`, you'll need to flush it.
+
+5. **Routing Issues on the Host**
+   - Check your routing table with `ip route`
+   - If the destination is not in the same subnet, make sure there's a route to it or a default route is available.
+   - Check if there's a correct NAT rule if using NAT: `iptables -t nat -L`
+   - Confirm that the interface you're using is up: `ip link`
+   - Ensure that the interface has the correct IP address: `ip addr`
 
 ## III. Docker Network Configuration
 
